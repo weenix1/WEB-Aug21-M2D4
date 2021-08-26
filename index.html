@@ -147,7 +147,7 @@
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
           <button>
-            <a data-toggle="modal" data-target="modal">Add Teammate</a>
+            <a data-toggle="modal" data-target="#modal">Add Teammate</a>
           </button>
 
           <!--  Ex 13) Create a modal view with a message and a email field -->
@@ -155,7 +155,7 @@
       </div>
 
       <div class="random-team">
-        <button class="d-in-line-block" createRandomTeamMem()>
+        <button class="d-in-line-block" onclick="createRandomTeamMem(event)">
           <a data-toggle="modal" data-target="#modal">Randomize your name </a>
         </button>
         <input
@@ -196,7 +196,7 @@
                   type="submit"
                   class="btn btn-primary"
                   data-dismiss="modal"
-                  waitingList(event)
+                  onclick=" waitingList(event)"
                 >
                   Submit
                 </button>
@@ -214,7 +214,7 @@
                 type="button"
                 class="btn btn-primary"
                 data-dismiss="modal"
-                waitingList(event)
+                onclick=" waitingList(event)"
               >
                 Save changes
               </button>
@@ -250,7 +250,7 @@
     </footer>
 
     <script>
-                 /* Features
+      /* Features
                Create an input to get the names to add to the list ("waiting list").
                Create an input to get the number of teams the user wants to generate.
                Create the grid for displaying the teams. Each team should be rendered inside of a column.
@@ -258,30 +258,22 @@
                Create an “Assign” button near the “waiting list”. Every time the user clicks on it, a randomly picked name is placed in a team and removed from the list of people.
             */
 
+      /*  Ex1.Create an input to get the names to add to the list ("waiting list"). */
 
-                 /*  Ex1.Create an input to get the names to add to the list ("waiting list"). */
+      const waitingList = function (str) {
+        let list = [];
+        list.push(JSON.parse(JSON.stringify(str)));
+        console.log(list);
+      };
 
-                 const waitingList = function (str){
-                   let list = []
-                   list.push(JSON.parse(JSON.stringify(str)));
-
-                 }
-
-               /* ex2.  Create an input to get the number of teams the user wants to generate. */
-               function createRandomTeamMem(){
-                 const teamMem = document.querySelector("random-num")
-                 let newTeamList
-                 for (let number of teamMem) {
-                  newTeamList +=Math.round(Math.random() * number);
-              }
-
-
-               }
-
-
-
-
-
+      /* ex2.  Create an input to get the number of teams the user wants to generate. */
+      function createRandomTeamMem(eventData) {
+        const teamMem = document.querySelector("random-num");
+        let newTeamList;
+        for (let number of teamMem) {
+          newTeamList += Math.round(Math.random() * number);
+        }
+      }
 
       /*
                    let waitList = document.querySelector("#modal")
@@ -291,9 +283,8 @@
                      return waitList
                    }
                    for
-
+ };
        */
-                 };
     </script>
   </body>
 </html>
