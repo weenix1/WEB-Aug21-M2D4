@@ -29,6 +29,15 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+
+    <style>
+      h1 {
+        text-align: center;
+      }
+      body {
+        background-color: rgb(0, 255, 221);
+      }
+    </style>
   </head>
   <body>
     <script
@@ -41,7 +50,7 @@
       integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
       crossorigin="anonymous"
     ></script>
-
+    <script src="app.js"></script>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <button
         class="navbar-toggler"
@@ -113,49 +122,71 @@
     Create a button that resets the state of the app.
      
     Complete the attached homework and submit it before 17.00 GMT +1. -->
+
+    <h1>TEAM GENERATOR</h1>
     <section class="team-groups">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
-          <div class="col-6 py-3">
-            <ul class="list-group">
-              <li class="list-group-item active" aria-current="true"></li>
-            </ul>
-          </div>
+         <div class="col-6"  id="list-of-team-name">
+          <label for="number">Team Member:</label>
+          <input
+            type="text"
+            id="team-name"
+            placeholder="fullname"
+           />
+          <input type="button" value="Add" onclick="addNameToTeam()" />
+          <ul class="team-list">
+            <!-- We create all meetings through JavaScript -->
+          </ul>
+        </div>
+      
+          <div class="col-6"   id="team-num">
+            <label for="number">Teams:</label>
+            <input
+              type="number"
+              id="number"
+              placeholder="select number of teams"
+            />
+            <input id="team-name"  type="button" value="Create" onclick="addNameToTeam()" />
+            <input type="button" value="Reset" onclick="" />
+            <div class="team">
+              <div class="row">
+                <div class="col-3">
+                  <ul class="team-list">
+                 <!-- We create all meetings through JavaScript -->
+                  </ul>
+                </div>
+                <div class="col-3">
+                  <ul class="team-list">
+                 <!-- We create all meetings through JavaScript -->
+                  </ul>
+                </div>
 
-          <div class="col-6 py-3">
-            <ul class="list-group">
-              <li class="list-group-item active" aria-current="true"></li>
-            </ul>
-          </div>
 
-          <div class="col-6 py-3">
-            <ul class="list-group">
-              <li class="list-group-item active" aria-current="true"></li>
-            </ul>
-          </div>
-
-          <div class="col-6 py-3">
-            <ul class="list-group">
-              <li class="list-group-item active" aria-current="true"></li>
-            </ul>
+            </div>
+            </div>
           </div>
         </div>
-      </div>
+          
     </section>
 
-    <section class="add-team-mate">
+
+  
+ 
+
+    <!-- <section class="add-team-mate">
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
           <button>
             <a data-toggle="modal" data-target="#modal">Add Teammate</a>
           </button>
 
-          <!--  Ex 13) Create a modal view with a message and a email field -->
-        </h6>
+          <! Ex 13) Create a modal view with a message and a email field -->
+       <!--  </h6>
       </div>
 
       <div class="random-team">
-        <button class="d-in-line-block" onclick="createRandomTeamMem(event)">
+        <button class="d-in-line-block" ">
           <a data-toggle="modal" data-target="#modal">Randomize your name </a>
         </button>
         <input
@@ -196,7 +227,7 @@
                   type="submit"
                   class="btn btn-primary"
                   data-dismiss="modal"
-                  onclick=" waitingList(event)"
+                  onclick=" addNameToTeam(event)"
                 >
                   Submit
                 </button>
@@ -214,14 +245,14 @@
                 type="button"
                 class="btn btn-primary"
                 data-dismiss="modal"
-                onclick=" waitingList(event)"
+                onclick=" addNameToTeam(event)"
               >
                 Save changes
               </button>
             </div>
           </div>
         </div>
-      </div>
+      </div>  -->
     </section>
 
     <footer
@@ -248,43 +279,5 @@
 
       <span>© 2021 Stream World LTD. All Rights Reserved.</span>
     </footer>
-
-    <script>
-      /* Features
-               Create an input to get the names to add to the list ("waiting list").
-               Create an input to get the number of teams the user wants to generate.
-               Create the grid for displaying the teams. Each team should be rendered inside of a column.
-               Make sure the previously specified number of teams gets generated before proceding with the next step.
-               Create an “Assign” button near the “waiting list”. Every time the user clicks on it, a randomly picked name is placed in a team and removed from the list of people.
-            */
-
-      /*  Ex1.Create an input to get the names to add to the list ("waiting list"). */
-
-      const waitingList = function (str) {
-        let list = [];
-        list.push(JSON.parse(JSON.stringify(str)));
-        console.log(list);
-      };
-
-      /* ex2.  Create an input to get the number of teams the user wants to generate. */
-      function createRandomTeamMem(eventData) {
-        const teamMem = document.querySelector("random-num");
-        let newTeamList;
-        for (let number of teamMem) {
-          newTeamList += Math.round(Math.random() * number);
-        }
-      }
-
-      /*
-                   let waitList = document.querySelector("#modal")
-                   if(waitList===waitList){
-                     console.log(waitList + "already exist")
-                   }else{
-                     return waitList
-                   }
-                   for
- };
-       */
-    </script>
   </body>
 </html>
