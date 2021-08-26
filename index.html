@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<!--
+    WELCOME TO THE STRIVE TEAM GENERATOR!
+
+    In this app you will generate teams and assign the participants to them.
+    You will use the Bootstrap components for the elements of your app.
+
+    The features are the following:
+    - The user should be able to add a list of names, find a way to get the user input and fill a list with the new name.
+    - The user should be able to set the number of teams he wants, so that they will be generated. A team is just another list to be displayed.
+    - An "Assign" button will be required in order to launch the team generation functionality.
+    - Every time the user clicks on the "Assign" button, a random name is placed in a team and removed from the initial list.
+    - Each team should be inside a "column" to be responsive.
+    - [EXTRA] Create a button to remove a user from a team, and putting him back in the main list, waiting to be reassigned.
+    - [EXTRA] Create a button to reset the state of the app.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team generator</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Navbar</a>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link disabled"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              >Disabled</a
+            >
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <!-- 
+    TEAM GENERATOR
+    Lets assume today is Friday and we want to split the class into teams to work together.
+    
+    In this app you will generate teams and assign the participants to them.
+
+    You will use Bootstrap components and grid system for speeding up the creation of the layout and elements of your app. Once you have the layout in place you can concentrate on the logical side with JavaScript. Create the layout quickly an roughly. No CSS required, use Bootstrap utility classes to style things.
+  
+    Application Flow: 
+    1.inserting names of people in a list → 2. inserting number of teams needed → 3. generating as many teams (lists in columns) as specified in the input → 4. assigning random people from the "waiting list" into a team.
+    
+    Features
+    Create an input to get the names to add to the list ("waiting list").
+    Create an input to get the number of teams the user wants to generate.
+    Create the grid for displaying the teams. Each team should be rendered inside of a column.
+    Make sure the previously specified number of teams gets generated before proceding with the next step.
+    Create an “Assign” button near the “waiting list”. Every time the user clicks on it, a randomly picked name is placed in a team and removed from the list of people.
+     
+    
+    # Extra Features
+    Create a button to remove a person from a team, that also puts him/her back in the waiting list, to be reassigned.
+    Create a button that resets the state of the app.
+     
+    Complete the attached homework and submit it before 17.00 GMT +1. -->
+    <section class="team-groups">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6 py-3">
+            <ul class="list-group">
+              <li class="list-group-item active" aria-current="true"></li>
+            </ul>
+          </div>
+
+          <div class="col-6 py-3">
+            <ul class="list-group">
+              <li class="list-group-item active" aria-current="true"></li>
+            </ul>
+          </div>
+
+          <div class="col-6 py-3">
+            <ul class="list-group">
+              <li class="list-group-item active" aria-current="true"></li>
+            </ul>
+          </div>
+
+          <div class="col-6 py-3">
+            <ul class="list-group">
+              <li class="list-group-item active" aria-current="true"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="add-team-mate">
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <button>
+            <a data-toggle="modal" data-target="modal">Add Teammate</a>
+          </button>
+
+          <!--  Ex 13) Create a modal view with a message and a email field -->
+        </h6>
+      </div>
+
+      <div class="random-team">
+        <button class="d-in-line-block" createRandomTeamMem()>
+          <a data-toggle="modal" data-target="#modal">Randomize your name </a>
+        </button>
+        <input
+          type="number"
+          class="d-in-line-block"
+          id="random-num"
+          placeholder="enter number of teams..."
+        />
+      </div>
+
+      <div class="modal" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Teammate name</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="exampleInputText">Fullname:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputText"
+                    placeholder="enter fullname..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                  waitingList(event)
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+                waitingList(event)
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="
+        container-fluid
+        d-flex
+        flex-column
+        justify-content-center
+        align-items-center
+        py-3
+        bg-dark
+        text-light
+      "
+      style="position: absolute; left: 0; right: 0; bottom: 0"
+    >
+      <button
+        type="button"
+        class="btn btn-outline-secondary mb-2"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Contact us
+      </button>
+
+      <span>© 2021 Stream World LTD. All Rights Reserved.</span>
+    </footer>
+
+    <script>
+                 /* Features
+               Create an input to get the names to add to the list ("waiting list").
+               Create an input to get the number of teams the user wants to generate.
+               Create the grid for displaying the teams. Each team should be rendered inside of a column.
+               Make sure the previously specified number of teams gets generated before proceding with the next step.
+               Create an “Assign” button near the “waiting list”. Every time the user clicks on it, a randomly picked name is placed in a team and removed from the list of people.
+            */
+
+
+                 /*  Ex1.Create an input to get the names to add to the list ("waiting list"). */
+
+                 const waitingList = function (str){
+                   let list = []
+                   list.push(JSON.parse(JSON.stringify(str)));
+
+                 }
+
+               /* ex2.  Create an input to get the number of teams the user wants to generate. */
+               function createRandomTeamMem(){
+                 const teamMem = document.querySelector("random-num")
+                 let newTeamList
+                 for (let number of teamMem) {
+                  newTeamList +=Math.round(Math.random() * number);
+              }
+
+
+               }
+
+
+
+
+
+
+      /*
+                   let waitList = document.querySelector("#modal")
+                   if(waitList===waitList){
+                     console.log(waitList + "already exist")
+                   }else{
+                     return waitList
+                   }
+                   for
+
+       */
+                 };
+    </script>
+  </body>
+</html>
