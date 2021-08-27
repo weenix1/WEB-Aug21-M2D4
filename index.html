@@ -127,8 +127,8 @@
     <section class="team-groups">
       <div class="container">
         <div class="row">
-         <div class="col-6"  id="list-of-team-name">
-          <label for="number">Team Member:</label>
+         <div class="col-12 col-sm-6"  id="list-of-team-name">
+          <span class="mx-1">New member:</span> 
           <input
             type="text"
             id="team-name"
@@ -140,30 +140,48 @@
           </ul>
         </div>
       
-          <div class="col-6"   id="team-num">
-            <label for="number">Teams:</label>
+          <div class="col-12 col-sm-6"   id="team-num">
+            <span class="mx-1">Teams:</span> 
             <input
               type="number"
               id="number"
               placeholder="select number of teams"
             />
-            <input id="team-name"  type="button" value="Create" onclick="addNameToTeam()" />
+            <input id="team-name"  type="button" value="Create" onclick="addTeam()" />
             <input type="button" value="Reset" onclick="" />
+
+
+
+
+
+
             <div class="team">
-              <div class="row">
+              <div class="row" id="teams-row">
                 <div class="col-3">
-                  <ul class="team-list">
-                 <!-- We create all meetings through JavaScript -->
-                  </ul>
+                  
                 </div>
-                <div class="col-3">
-                  <ul class="team-list">
-                 <!-- We create all meetings through JavaScript -->
-                  </ul>
-                </div>
+                
 
 
             </div>
+
+            <div class="col-6 mx-auto">
+              <ul id="team-queue" class="list-group">
+              </ul>
+              <div class="d-flex">
+                  <button class="btn btn-primary mx-auto my-3" onclick="assign()">
+                      Assign
+                  </button>
+                  <button class="btn btn-danger mx-auto my-3" onclick="reset()">
+                      Reset
+                  </button>
+
+              </div>
+              
+          </div>
+
+
+
             </div>
           </div>
         </div>
