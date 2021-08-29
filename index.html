@@ -31,11 +31,19 @@
     />
 
     <style>
+      body {
+        max-height: 100vh;
+      }
       h1 {
         text-align: center;
       }
       body {
-        background-color: rgb(0, 255, 221);
+        background-color: rgb(13, 231, 166);
+        color: rgb(0, 0, 0);
+      }
+
+      footer {
+        position: sticky;
       }
     </style>
   </head>
@@ -50,7 +58,7 @@
       integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
       crossorigin="anonymous"
     ></script>
-    <script src="app.js"></script>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <button
         class="navbar-toggler"
@@ -123,154 +131,43 @@
      
     Complete the attached homework and submit it before 17.00 GMT +1. -->
 
-    <h1>TEAM GENERATOR</h1>
     <section class="team-groups">
       <div class="container">
+        <h1>TEAM GENERATOR</h1>
         <div class="row">
-         <div class="col-12 col-sm-6"  id="list-of-team-name">
-          <span class="mx-1">New member:</span> 
-          <input
-            type="text"
-            id="team-name"
-            placeholder="fullname"
-           />
-          <input type="button" value="Add" onclick="addNameToTeam()" />
-          <ul class="team-list">
-            <!-- We create all meetings through JavaScript -->
-          </ul>
-        </div>
-      
-          <div class="col-12 col-sm-6"   id="team-num">
-            <span class="mx-1">Teams:</span> 
-            <input
-              type="number"
-              id="number"
-              placeholder="select number of teams"
-            />
-            <input id="team-name"  type="button" value="Create" onclick="addTeam()" />
-            <input type="button" value="Reset" onclick="" />
-
-
-
-
-
-
-            <div class="team">
-              <div class="row" id="teams-row">
-                <div class="col-3">
-                  
-                </div>
-                
-
-
-            </div>
-
-            <div class="col-6 mx-auto">
-              <ul id="team-queue" class="list-group">
-              </ul>
-              <div class="d-flex">
-                  <button class="btn btn-primary mx-auto my-3" onclick="assign()">
-                      Assign
-                  </button>
-                  <button class="btn btn-danger mx-auto my-3" onclick="reset()">
-                      Reset
-                  </button>
-
-              </div>
-              
+          <div class="col-12 col-sm-6 py-4 d-flex align-items-center">
+            <span class="mx-1">New member:</span>
+            <form onsubmit="addPerson(event)">
+              <input id="input-name" type="text" class="ml-auto mr-2" />
+              <button type="submit" class="btn btn-primary my-2">Add</button>
+            </form>
           </div>
-
-
-
+          <div class="col-12 col-sm-6 py-4 d-flex align-items-center">
+            <div class="ml-auto">
+              <span class="mx-1">Teams:</span>
+              <button class="btn btn-primary" onclick="removeTeam()">-</button>
+              <span id="teams-number" class="px-3">2</span>
+              <button class="btn btn-primary" onclick="addTeam()">+</button>
             </div>
           </div>
+
+          <div class="col-6 mx-auto">
+            <ul id="team-queue" class="list-group"></ul>
+            <div class="d-flex">
+              <button class="btn btn-primary mx-auto my-3" onclick="assign()">
+                Assign
+              </button>
+              <button class="btn btn-danger mx-auto my-3" onclick="reset()">
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div class="col-12 my-5">
+            <div id="teams-row" class="row"></div>
+          </div>
         </div>
-          
-    </section>
-
-
-  
- 
-
-    <!-- <section class="add-team-mate">
-      <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <button>
-            <a data-toggle="modal" data-target="#modal">Add Teammate</a>
-          </button>
-
-          <! Ex 13) Create a modal view with a message and a email field -->
-       <!--  </h6>
       </div>
-
-      <div class="random-team">
-        <button class="d-in-line-block" ">
-          <a data-toggle="modal" data-target="#modal">Randomize your name </a>
-        </button>
-        <input
-          type="number"
-          class="d-in-line-block"
-          id="random-num"
-          placeholder="enter number of teams..."
-        />
-      </div>
-
-      <div class="modal" tabindex="-1" role="dialog" id="modal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Teammate name</h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="exampleInputText">Fullname:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleInputText"
-                    placeholder="enter fullname..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  data-dismiss="modal"
-                  onclick=" addNameToTeam(event)"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-dismiss="modal"
-                onclick=" addNameToTeam(event)"
-              >
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>  -->
     </section>
 
     <footer
@@ -297,5 +194,7 @@
 
       <span>© 2021 Stream World LTD. All Rights Reserved.</span>
     </footer>
+
+    <script src="app.js"></script>
   </body>
 </html>
